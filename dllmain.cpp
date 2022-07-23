@@ -20,7 +20,7 @@ std::uint32_t tramp_hook( void* hook_addr, void* new_func, std::uint32_t instr_s
 	*( reinterpret_cast < std::uint32_t* >( reinterpret_cast< std::uint32_t >( hook_addr ) + 1) ) = rel_addr;
 
 	VirtualProtect( reinterpret_cast< void* >( hook_addr ), instr_size, vp_old_prot, nullptr );
-	return reinterpret_cast< std::uint32_t >( hook_addr ) + instr_size;
+	return reinterpret_cast< std::uint32_t >( hook_addr ) + jmp_instr_size;
 }
 
 std::uint32_t cont_execution_addr;
